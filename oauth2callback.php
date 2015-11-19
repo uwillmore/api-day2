@@ -10,7 +10,7 @@ if(isset($_GET['code'])){
       "code" => $code,
       "client_id" => "733929298649-a32ahoj5jio55csf1svs3et5sftvgi4n.apps.googleusercontent.com",
       "client_secret" => "SPPpUr3mzWNhG8kyYTLqro-N",
-      "redirect_uri" => "https://localhost/verified.php",
+      "redirect_uri" => "http://localhost/oauth2callback.php",
       "grant_type" => "authorization_code"
   );
 
@@ -21,7 +21,6 @@ if(isset($_GET['code'])){
   curl_setopt_array($curl, array(
       CURLOPT_RETURNTRANSFER => 1,
       CURLOPT_URL => 'https://accounts.google.com/o/oauth2/token',
-
       CURLOPT_POST => 1,
       CURLOPT_POSTFIELDS => $params
   ));
@@ -29,7 +28,9 @@ if(isset($_GET['code'])){
   $resp = curl_exec($curl);
 
 
-  print $resp;
+
+
+  print "<pre>".print_r(json_decode($resp), true)."</pre>";
   // Close request to clear up some resources
   curl_close($curl);
 

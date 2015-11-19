@@ -9,9 +9,8 @@
     "redirect_uri" => "http://localhost/oauth2callback.php",
     "scope" => "https://www.googleapis.com/auth/plus.me"
   );
-  
-  $request_url = $url . "?". http_build_query($params);
 
+  $request_url = $url . "?". http_build_query($params);
   header("Location: ".$request_url);
 
  ?>
